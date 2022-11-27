@@ -1,0 +1,102 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col-12.topbanner
+        h1 API Test server for Developers
+    .row
+      .col-12.margin-top-30
+        h3 How it works
+        p This site give you a possibility to use the Mock API server for a testing of your web applications.
+        p.lead It is free and a CORS policy setted to "all" request so, you can use the <mark>fetch()</mark> command as you wish.
+        p Our service has a set of the most popular cases for API like <mark>users</mark>, <mark>addresses</mark>, <mark>payments</mark> etc. The part of routes has a logic relations to next API routes an could be used for a checking of an API calls chaining.
+    .row
+      .col-12.margin-top-30
+        h3 A list of API routes
+        p A User model information
+    .row 
+      .accordion(id="accordion")
+        .accordion-item
+          h2(class="accordion-header" id="heading1")
+            button.accordion-button(
+              class="collapsed",
+              type="button", data-bs-toggle="collapse",
+              data-bs-target="#collapse1", aria-expanded="false",
+              aria-controls="collapse1"
+            ) GET /api/users 
+          .accordion-collapse.collapse(
+            id="collapse1", aria-labelledby="heading1", data-bs-parent="#accordion"
+          )
+            .accordion-body
+              p Get a list of the all available users in service (up to 10) without a detailed information.
+              pre
+                code {
+                br
+                code &nbsp;&nbsp;id: 10001,
+                br
+                code &nbsp;&nbsp;username: "jonnyd",
+                br
+                code &nbsp;&nbsp;role: "admin"
+                br
+                code }
+
+        .accordion-item
+          h2(class="accordion-header" id="heading2")
+            button.accordion-button(
+              class="collapsed",
+              type="button", data-bs-toggle="collapse",
+              data-bs-target="#collapse2", aria-expanded="false",
+              aria-controls="collapse2"
+            ) GET /api/user/:userId 
+          .accordion-collapse.collapse(
+            id="collapse2", aria-labelledby="heading2", data-bs-parent="#accordion"
+          )
+            .accordion-body
+              p Get a detailed information about the current user by ID.
+              pre
+                code {
+                br
+                code &nbsp;&nbsp;id: 10001,
+                br
+                code &nbsp;&nbsp;username: "jonnyd",
+                br
+                code &nbsp;&nbsp;role: "admin",
+                br
+                code &nbsp;&nbsp;first_name: "Jonny",
+                br
+                code &nbsp;&nbsp;last_name: "Datagramma",
+                br
+                code &nbsp;&nbsp;creation_date: 1606900200000,
+                br
+                code &nbsp;&nbsp;last_visit_date: 1668199597829
+                br
+                code }    
+
+        .accordion-item
+          h2(class="accordion-header" id="heading3")
+            button.accordion-button(
+              class="collapsed",
+              type="button", data-bs-toggle="collapse",
+              data-bs-target="#collapse3", aria-expanded="false",
+              aria-controls="collapse3"
+            ) POST /api/user/:userId 
+          .accordion-collapse.collapse(
+            id="collapse3", aria-labelledby="heading3", data-bs-parent="#accordion"
+          )
+            .accordion-body
+              p Make a new user in system. Request should be have the filled mandatory fields. This new user will not added to our service, just returns back a 201 status code and an User Details object for make a control from request side.
+
+        .accordion-item
+          h2(class="accordion-header" id="heading4")
+            button.accordion-button(
+              class="collapsed",
+              type="button", data-bs-toggle="collapse",
+              data-bs-target="#collapse4", aria-expanded="false",
+              aria-controls="collapse4"
+            ) DELETE /api/user/:userId 
+          .accordion-collapse.collapse(
+            id="collapse4", aria-labelledby="heading4", data-bs-parent="#accordion"
+          )
+            .accordion-body
+              p Delete the User by ID. In real the Users stays in our service, just returns a response about this event for control from client side.

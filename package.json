@@ -1,0 +1,26 @@
+{
+  "name": "testapi.online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://deivan@bitbucket.org/deivan/stepwars.git"
+  },
+  "author": "Ivan Demenkov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://bitbucket.org/deivan/stepwars/issues"
+  },
+  "homepage": "https://bitbucket.org/deivan/stepwars#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  }
+}
