@@ -52,5 +52,41 @@ module.exports = [
         last_name: "Cat Sr.",
         creation_date: 1606900700000,
         last_visit_date: 1668206597820
+    },
+    {
+        id: 10007,
+        username: "roberts",
+        role: "user",
+        first_name: "Bob",
+        last_name: "Spounge",
+        creation_date: 1606910700000,
+        last_visit_date: 1669106597820
+    },
+    {
+        id: 10008,
+        username: "patriks",
+        role: "user",
+        first_name: "Patrik",
+        last_name: "Star",
+        creation_date: 1606910800000,
+        last_visit_date: 1669106697820
+    },
+    {
+        id: 10009,
+        username: "puff",
+        role: "user",
+        first_name: "Missis",
+        last_name: "Puff",
+        creation_date: 1606910810000,
+        last_visit_date: 1669106797820
+    },
+    {
+        id: 10010,
+        username: "squiddie",
+        role: "user",
+        first_name: "Squidward",
+        last_name: "Tentikles",
+        creation_date: 1606910820000,
+        last_visit_date: 1669106897820
     }
 ];

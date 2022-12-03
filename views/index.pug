@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  .container
+  .container.bordered
     .row
       .col-12.topbanner
         h1 API Test server for Developers
@@ -14,7 +14,7 @@ block content
     .row
       .col-12.margin-top-30
         h3 A list of API routes
-        p A User model information
+        h5 The User model information
     .row 
       .accordion(id="accordion")
         .accordion-item
@@ -37,7 +37,9 @@ block content
                 br
                 code &nbsp;&nbsp;username: "jonnyd",
                 br
-                code &nbsp;&nbsp;role: "admin"
+                code &nbsp;&nbsp;role: "admin",
+                br
+                code &nbsp;&nbsp;avatar: '/images/avatars/10001.png'
                 br
                 code }
 
@@ -80,12 +82,39 @@ block content
               type="button", data-bs-toggle="collapse",
               data-bs-target="#collapse3", aria-expanded="false",
               aria-controls="collapse3"
-            ) POST /api/user/:userId 
+            ) POST /api/user 
           .accordion-collapse.collapse(
             id="collapse3", aria-labelledby="heading3", data-bs-parent="#accordion"
           )
             .accordion-body
-              p Make a new user in system. Request should be have the filled mandatory fields. This new user will not added to our service, just returns back a 201 status code and an User Details object for make a control from request side.
+              p Emulates a making a new user in system. Request should be have the filled mandatory fields. This new user will not added to our service, just returns back a 201 status code and an User Details object for make a control from request side.
+              p There are the mandatory fields (their length should be not more 50 characters):
+              pre
+                code {
+                br
+                code &nbsp;&nbsp;username: "jonnyd",
+                br
+                code &nbsp;&nbsp;first_name: "Jonny",
+                br
+                code &nbsp;&nbsp;last_name: "Datagramma",
+                br
+                code }
+              p An ID of the created user always will be a new after every POST request (it is a feature).
+
+        .accordion-item
+          h2(class="accordion-header" id="heading5")
+            button.accordion-button(
+              class="collapsed",
+              type="button", data-bs-toggle="collapse",
+              data-bs-target="#collapse5", aria-expanded="false",
+              aria-controls="collapse5"
+            ) PUT /api/user/:userId 
+          .accordion-collapse.collapse(
+            id="collapse5", aria-labelledby="heading5", data-bs-parent="#accordion"
+          )
+            .accordion-body
+              p Emulates an updating the User in database. Request should be have the filled mandatory fields. 
+              p Returns back an object with requested fields which sends back for make a control from request side.
 
         .accordion-item
           h2(class="accordion-header" id="heading4")
@@ -100,3 +129,13 @@ block content
           )
             .accordion-body
               p Delete the User by ID. In real the Users stays in our service, just returns a response about this event for control from client side.
+
+      .row
+        .col-12.margin-top-30
+          h5 The Addresses model information
+          p Under construction...
+
+      .row
+        .col-12.margin-top-30
+          h5 The Payments model information
+          p Under construction...
