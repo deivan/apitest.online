@@ -14,7 +14,7 @@ block content
     .row
       .col-12.margin-top-30
         h3 A list of API routes
-        h5 The User model information
+        h5.margin-top-30 The User model information
     .row 
       .accordion(id="accordion")
         .accordion-item
@@ -129,6 +129,54 @@ block content
           )
             .accordion-body
               p Delete the User by ID. In real the Users stays in our service, just returns a response about this event for control from client side.
+
+    .row 
+      .col-12.margin-top-30 
+        h5 The wrong API routes 
+        p Sometimes a Developer needs to check how the error catching flow works. No problem! Below you can see the routes which provide the error answers to check how works the <mark>.catch()</mark> branch in the Promise.
+    .row 
+      .accordion(id="accordion1")
+        .accordion-item
+          h2(class="accordion-header" id="heading11")
+            button.accordion-button(
+              class="collapsed",
+              type="button", data-bs-toggle="collapse",
+              data-bs-target="#collapse11", aria-expanded="false",
+              aria-controls="collapse11"
+            ) GET /api/wrong/timeout
+          .accordion-collapse.collapse(
+            id="collapse11", aria-labelledby="heading11", data-bs-parent="#accordion1"
+          )
+            .accordion-body
+              p That route returns back an error 408 during 5-10 seconds.
+
+        .accordion-item
+          h2(class="accordion-header" id="heading12")
+            button.accordion-button(
+              class="collapsed",
+              type="button", data-bs-toggle="collapse",
+              data-bs-target="#collapse12", aria-expanded="false",
+              aria-controls="collapse12"
+            ) GET /api/wrong/notfound
+          .accordion-collapse.collapse(
+            id="collapse12", aria-labelledby="heading12", data-bs-parent="#accordion1"
+          )
+            .accordion-body
+              p That route returns back an error 404.
+
+        .accordion-item
+          h2(class="accordion-header" id="heading13")
+            button.accordion-button(
+              class="collapsed",
+              type="button", data-bs-toggle="collapse",
+              data-bs-target="#collapse13", aria-expanded="false",
+              aria-controls="collapse13"
+            ) GET /api/wrong/server
+          .accordion-collapse.collapse(
+            id="collapse13", aria-labelledby="heading13", data-bs-parent="#accordion1"
+          )
+            .accordion-body
+              p That route returns back a server fault with status 500.
 
       .row
         .col-12.margin-top-30

@@ -90,4 +90,19 @@ router.delete('/user/:id', (req, res) => {
   }
 });
 
+// Wrong answers block
+router.get('/wrong/timeout', (req, res) => {
+  setTimeout(() => {
+    res.status(408).json({ error: true, msg: 'Stopped by timeout!' });
+  }, 5000);
+});
+
+router.get('/wrong/notfound', (req, res) => {
+  res.status(404).json({ error: true, msg: 'Resource not found!' });
+});
+
+router.get('/wrong/server', (req, res) => {
+  res.status(500).json({ error: true, msg: 'Server got down and I don\'t know why...' });
+});
+
 module.exports = router;
