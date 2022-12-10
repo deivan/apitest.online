@@ -14,176 +14,49 @@ block content
     .row
       .col-12.margin-top-30
         h3 A list of API routes
-        h5.margin-top-30 The User model information
-    .row 
-      .accordion(id="accordion")
-        .accordion-item
-          h2(class="accordion-header" id="heading1")
-            button.accordion-button(
-              class="collapsed",
-              type="button", data-bs-toggle="collapse",
-              data-bs-target="#collapse1", aria-expanded="false",
-              aria-controls="collapse1"
-            ) GET /api/users 
-          .accordion-collapse.collapse(
-            id="collapse1", aria-labelledby="heading1", data-bs-parent="#accordion"
+    .row.min-height-425
+      .col-12.margin-top-30
+        ul.nav.nav-tabs(id="mainTab", role="tablist")
+          li.nav-item(role="presentation")
+            a.nav-link.active(
+              id="user-model", data-bs-toggle="tab", href="#", role="tab",
+              data-bs-target="#user-model-pane",  aria-controls="user-model-pane",
+              aria-selected="true"
+            ) The User model
+          li.nav-item(role="presentation")
+            a.nav-link(
+              id="wrong-model", data-bs-toggle="tab", href="#", role="tab",
+              data-bs-target="#wrong-model-pane",  aria-controls="wrong-model-pane",
+              aria-selected="false"
+            ) The Wrong model
+          li.nav-item(role="presentation")
+            a.nav-link(
+              id="addresses-model", data-bs-toggle="tab", href="#", role="tab",
+              data-bs-target="#addresses-model-pane",  aria-controls="addresses-model-pane",
+              aria-selected="false"
+            ) The Addresses model
+          li.nav-item(role="presentation")
+            a.nav-link(
+              id="payments-model", data-bs-toggle="tab", href="#", role="tab",
+              data-bs-target="#payments-model-pane",  aria-controls="payments-model-pane",
+              aria-selected="false"
+            ) The Payments model
+        .tab-content(id="mainTabContent")
+          .tab-pane.fade.show.active(
+            id="user-model-pane", role="tabpanel", aria-labelledby="user-model", tabindex="0"
           )
-            .accordion-body
-              p Get a list of the all available users in service (up to 10) without a detailed information.
-              pre
-                code {
-                br
-                code &nbsp;&nbsp;id: 10001,
-                br
-                code &nbsp;&nbsp;username: "jonnyd",
-                br
-                code &nbsp;&nbsp;role: "admin",
-                br
-                code &nbsp;&nbsp;avatar: '/images/avatars/10001.png'
-                br
-                code }
-
-        .accordion-item
-          h2(class="accordion-header" id="heading2")
-            button.accordion-button(
-              class="collapsed",
-              type="button", data-bs-toggle="collapse",
-              data-bs-target="#collapse2", aria-expanded="false",
-              aria-controls="collapse2"
-            ) GET /api/user/:userId 
-          .accordion-collapse.collapse(
-            id="collapse2", aria-labelledby="heading2", data-bs-parent="#accordion"
+            include user.pug
+          .tab-pane.fade(
+            id="wrong-model-pane", role="tabpanel", aria-labelledby="wrong-model", tabindex="0"
           )
-            .accordion-body
-              p Get a detailed information about the current user by ID.
-              pre
-                code {
-                br
-                code &nbsp;&nbsp;id: 10001,
-                br
-                code &nbsp;&nbsp;username: "jonnyd",
-                br
-                code &nbsp;&nbsp;role: "admin",
-                br
-                code &nbsp;&nbsp;first_name: "Jonny",
-                br
-                code &nbsp;&nbsp;last_name: "Datagramma",
-                br
-                code &nbsp;&nbsp;creation_date: 1606900200000,
-                br
-                code &nbsp;&nbsp;last_visit_date: 1668199597829
-                br
-                code }    
-
-        .accordion-item
-          h2(class="accordion-header" id="heading3")
-            button.accordion-button(
-              class="collapsed",
-              type="button", data-bs-toggle="collapse",
-              data-bs-target="#collapse3", aria-expanded="false",
-              aria-controls="collapse3"
-            ) POST /api/user 
-          .accordion-collapse.collapse(
-            id="collapse3", aria-labelledby="heading3", data-bs-parent="#accordion"
+            include wrong.pug
+          .tab-pane.fade(
+            id="addresses-model-pane", role="tabpanel", aria-labelledby="addresses-model", tabindex="0"
           )
-            .accordion-body
-              p Emulates a making a new user in system. Request should be have the filled mandatory fields. This new user will not added to our service, just returns back a 201 status code and an User Details object for make a control from request side.
-              p There are the mandatory fields (their length should be not more 50 characters):
-              pre
-                code {
-                br
-                code &nbsp;&nbsp;username: "jonnyd",
-                br
-                code &nbsp;&nbsp;first_name: "Jonny",
-                br
-                code &nbsp;&nbsp;last_name: "Datagramma",
-                br
-                code }
-              p An ID of the created user always will be a new after every POST request (it is a feature).
-
-        .accordion-item
-          h2(class="accordion-header" id="heading5")
-            button.accordion-button(
-              class="collapsed",
-              type="button", data-bs-toggle="collapse",
-              data-bs-target="#collapse5", aria-expanded="false",
-              aria-controls="collapse5"
-            ) PUT /api/user/:userId 
-          .accordion-collapse.collapse(
-            id="collapse5", aria-labelledby="heading5", data-bs-parent="#accordion"
+            include addresses.pug
+          .tab-pane.fade(
+            id="payments-model-pane", role="tabpanel", aria-labelledby="payments-model", tabindex="0"
           )
-            .accordion-body
-              p Emulates an updating the User in database. Request should be have the filled mandatory fields. 
-              p Returns back an object with requested fields which sends back for make a control from request side.
-
-        .accordion-item
-          h2(class="accordion-header" id="heading4")
-            button.accordion-button(
-              class="collapsed",
-              type="button", data-bs-toggle="collapse",
-              data-bs-target="#collapse4", aria-expanded="false",
-              aria-controls="collapse4"
-            ) DELETE /api/user/:userId 
-          .accordion-collapse.collapse(
-            id="collapse4", aria-labelledby="heading4", data-bs-parent="#accordion"
-          )
-            .accordion-body
-              p Delete the User by ID. In real the Users stays in our service, just returns a response about this event for control from client side.
+            include payments.pug
 
     .row 
-      .col-12.margin-top-30 
-        h5 The wrong API routes 
-        p Sometimes a Developer needs to check how the error catching flow works. No problem! Below you can see the routes which provide the error answers to check how works the <mark>.catch()</mark> branch in the Promise.
-    .row 
-      .accordion(id="accordion1")
-        .accordion-item
-          h2(class="accordion-header" id="heading11")
-            button.accordion-button(
-              class="collapsed",
-              type="button", data-bs-toggle="collapse",
-              data-bs-target="#collapse11", aria-expanded="false",
-              aria-controls="collapse11"
-            ) GET /api/wrong/timeout
-          .accordion-collapse.collapse(
-            id="collapse11", aria-labelledby="heading11", data-bs-parent="#accordion1"
-          )
-            .accordion-body
-              p That route returns back an error 408 during 5-10 seconds.
-
-        .accordion-item
-          h2(class="accordion-header" id="heading12")
-            button.accordion-button(
-              class="collapsed",
-              type="button", data-bs-toggle="collapse",
-              data-bs-target="#collapse12", aria-expanded="false",
-              aria-controls="collapse12"
-            ) GET /api/wrong/notfound
-          .accordion-collapse.collapse(
-            id="collapse12", aria-labelledby="heading12", data-bs-parent="#accordion1"
-          )
-            .accordion-body
-              p That route returns back an error 404.
-
-        .accordion-item
-          h2(class="accordion-header" id="heading13")
-            button.accordion-button(
-              class="collapsed",
-              type="button", data-bs-toggle="collapse",
-              data-bs-target="#collapse13", aria-expanded="false",
-              aria-controls="collapse13"
-            ) GET /api/wrong/server
-          .accordion-collapse.collapse(
-            id="collapse13", aria-labelledby="heading13", data-bs-parent="#accordion1"
-          )
-            .accordion-body
-              p That route returns back a server fault with status 500.
-
-      .row
-        .col-12.margin-top-30
-          h5 The Addresses model information
-          p Under construction...
-
-      .row
-        .col-12.margin-top-30
-          h5 The Payments model information
-          p Under construction...

@@ -1,0 +1,89 @@
+.container 
+  .row.margin-top-30
+    p Every User can have some payments methods. Usually it is an object wich has a token from paiment system, type of that system and credit card number mask.
+    p Also there can add a new payment method or delete the one.
+    .accordion(id="accordion4")
+      .accordion-item
+        h2(class="accordion-header" id="heading41")
+          button.accordion-button(
+            class="collapsed",
+            type="button", data-bs-toggle="collapse",
+            data-bs-target="#collapse41", aria-expanded="false",
+            aria-controls="collapse41"
+          ) GET /api/payments/:userId 
+        .accordion-collapse.collapse(
+          id="collapse41", aria-labelledby="heading41", data-bs-parent="#accordion4"
+        )
+          .accordion-body
+            p Get a list of the payment methods for some User, could be empty. The User ID is mandatory for this request.
+            pre
+              code [
+              br
+              code &nbsp;&nbsp;{
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;id: "30001",
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;type: "visa",
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;card: "47****3385",
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;paymentId: "48f71d5efade496978eef5e6e7c30934e8ae6b05259dbe0effcc23e288375aef",
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;expires: "01/24",
+              br
+              code &nbsp;&nbsp;},
+              br
+              code &nbsp;&nbsp;...
+              br
+              code ]
+
+      .accordion-item
+        h2(class="accordion-header" id="heading42")
+          button.accordion-button(
+            class="collapsed",
+            type="button", data-bs-toggle="collapse",
+            data-bs-target="#collapse42", aria-expanded="false",
+            aria-controls="collapse42"
+          ) POST /api/payments/:userId 
+        .accordion-collapse.collapse(
+          id="collapse42", aria-labelledby="heading42", data-bs-parent="#accordion4"
+        )
+          .accordion-body
+            p Make a new payment method for some User. The User Id is mandatory. Returns back an Address object associated with the User. That object will not be added to our server.
+            pre
+              code {
+              br
+              ccode &nbsp;&nbsp;id: "30001",
+              br
+              code &nbsp;&nbsp;type: "visa",
+              br
+              code &nbsp;&nbsp;card: "47****3385",
+              br
+              code &nbsp;&nbsp;paymentId: "48f71d5efade496978eef5e6e7c30934e8ae6b05259dbe0effcc23e288375aef",
+              br
+              code &nbsp;&nbsp;expires: "01/24",
+              br
+              code }    
+            p An ID of the created payment method always will be a new after every POST request (it is a feature).
+
+      .accordion-item
+        h2(class="accordion-header" id="heading43")
+          button.accordion-button(
+            class="collapsed",
+            type="button", data-bs-toggle="collapse",
+            data-bs-target="#collapse43", aria-expanded="false",
+            aria-controls="collapse43"
+          ) DELETE /api/payments/:paymentId 
+        .accordion-collapse.collapse(
+          id="collapse43", aria-labelledby="heading43", data-bs-parent="#accordion4"
+        )
+          .accordion-body
+            p Emulates a deleting the payment method from server by payment method ID (ID is mandatory). Returns back an object with no error status.
+            pre
+              code {
+              br
+              code &nbsp;&nbsp;error: false,
+              br
+              code &nbsp;&nbsp;msg: "The Payment Method &lt;ID&gt; was deleted successfully",
+              br
+              code }

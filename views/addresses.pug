@@ -1,0 +1,94 @@
+
+.container 
+  .row.margin-top-30
+    p Every User can have the addresses wich marked as shipping or billing. So there presents a functionality which returns an Addresses list for some user by their ID.
+    p Also we can add a new address or delete the one.
+    .accordion(id="accordion3")
+      .accordion-item
+        h2(class="accordion-header" id="heading31")
+          button.accordion-button(
+            class="collapsed",
+            type="button", data-bs-toggle="collapse",
+            data-bs-target="#collapse31", aria-expanded="false",
+            aria-controls="collapse31"
+          ) GET /api/addresses/:userId 
+        .accordion-collapse.collapse(
+          id="collapse31", aria-labelledby="heading31", data-bs-parent="#accordion3"
+        )
+          .accordion-body
+            p Get a list of the addresses for some User, could be empty. The User ID is mandatory for this request.
+            pre
+              code [
+              br
+              code &nbsp;&nbsp;{
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;id: "20001",
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;type: "shipping",
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;country: "Neverland",
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;city: "Bigrouter",
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;address: "255 Dev Null st.",
+              br
+              code &nbsp;&nbsp;&nbsp;&nbsp;phone: "+127001",
+              br
+              code &nbsp;&nbsp;},
+              br
+              code &nbsp;&nbsp;...
+              br
+              code ]
+
+      .accordion-item
+        h2(class="accordion-header" id="heading32")
+          button.accordion-button(
+            class="collapsed",
+            type="button", data-bs-toggle="collapse",
+            data-bs-target="#collapse32", aria-expanded="false",
+            aria-controls="collapse32"
+          ) POST /api/addresses/:userId 
+        .accordion-collapse.collapse(
+          id="collapse32", aria-labelledby="heading32", data-bs-parent="#accordion3"
+        )
+          .accordion-body
+            p Make a new address for some User. The User Id is mandatory. Returns back an Address object associated with the User. That object will not be added to our server.
+            pre
+              code {
+              br
+              code &nbsp;&nbsp;id: 20001,
+              br
+              code &nbsp;&nbsp;type: "shipping",
+              br
+              code &nbsp;&nbsp;country: "Neverland",
+              br
+              code &nbsp;&nbsp;city: "Bigrouter",
+              br
+              code &nbsp;&nbsp;address: "255 Dev Null st.",
+              br
+              code &nbsp;&nbsp;phone: "+127001",
+              br
+              code }    
+            p An ID of the created address always will be a new after every POST request (it is a feature).
+
+      .accordion-item
+        h2(class="accordion-header" id="heading33")
+          button.accordion-button(
+            class="collapsed",
+            type="button", data-bs-toggle="collapse",
+            data-bs-target="#collapse33", aria-expanded="false",
+            aria-controls="collapse33"
+          ) DELETE /api/addresses/:addressId 
+        .accordion-collapse.collapse(
+          id="collapse33", aria-labelledby="heading33", data-bs-parent="#accordion3"
+        )
+          .accordion-body
+            p Emulates a deleting the address from server by address ID (ID is mandatory). Returns back an object with no error status.
+            pre
+              code {
+              br
+              code &nbsp;&nbsp;error: false,
+              br
+              code &nbsp;&nbsp;msg: "Address &lt;ID&gt; was deleted successfully",
+              br
+              code }
