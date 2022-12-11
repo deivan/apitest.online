@@ -17,6 +17,7 @@ let accessLogStream = fs.createWriteStream(path.join(__dirname, `${logDir}/${Dat
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.enable('trust proxy');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
